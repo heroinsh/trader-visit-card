@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مینی‌اپ ویزیت کارت شایان </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFD700; /* رنگ طلایی */
+            --secondary-color: #D4AF37; /* رنگ طلایی تیره‌تر */
+            --background-color: #1a1a1a; /* رنگ مشکی برای پس‌زمینه */
+            --text-color: #f8f9fa; /* رنگ سفید برای متن */
+            --card-bg: #2d2d2d; /* رنگ مشکی برای کارت */
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --scrollbar-thumb: var(--primary-color);
+            --scrollbar-track: var(--background-color);
+        }
+
+        body {
+            font-family: 'Vazir', 'Poppins', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* استایل اسکرول بار */
+        body::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 10px;
+            border: 3px solid var(--scrollbar-track);
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-left: 20px;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease;
+        }
+
+        .profile-info h2 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: var(--text-color);
+            font-weight: 500;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: var(--text-color);
+            line-height: 1.6;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skills {
+            margin-bottom: 30px;
+        }
+
+        .skills h3 {
+            margin: 0 0 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .progress {
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: var(--gradient);
+            transition: width 0.5s ease;
+        }
+
+        .services {
+            margin-bottom: 30px;
+        }
+
+        .services h3 {
+            margin: 0 0 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .services ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .services ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .services ul li i {
+            margin-left: 10px;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .social-links h3 {
+            margin: 0 0 15px;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .contact-button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-button a {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 500;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .contact-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .channel-button {
+            text-align: center;
+        }
+
+        .channel-button a {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 500;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .channel-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile img {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="https://i.postimg.cc/1t33kKVR/photo-2025-01-24-16-46-26.jpg" alt="تصویر پروفایل">
+            <div class="profile-info">
+                <h1>شایان قاسمی</h1>
+                <h2>تحلیل‌گر بازارهای مالی</h2>
+                <p>من یک تریدر حرفه‌ای با تجربه در بازارهای مالی جهانی هستم. تخصص من در تحلیل تکنیکال، مدیریت ریسک و معاملات روزانه است. با استفاده از استراتژی‌های پیشرفته، به مشتریانم کمک می‌کنم تا به سودهای پایدار دست یابند.</p>
+            </div>
+        </div>
+
+        <div class="skills">
+            <h3>مهارت‌ها</h3>
+            <div class="skill-item">
+                <label>تحلیل تکنیکال</label>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <label>مدیریت ریسک</label>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <label>معاملات روزانه</label>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <label>تحلیل فاندامنتال</label>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <label>استراتژی‌های معاملاتی</label>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <h3>خدمات ارائه شده</h3>
+            <ul>
+                <li><i class="fas fa-chart-line"></i>تحلیل بازارهای مالی</li>
+                <li><i class="fas fa-coins"></i>مدیریت پرتفوی</li>
+                <li><i class="fas fa-hand-holding-usd"></i>مشاوره سرمایه‌گذاری</li>
+                <li><i class="fas fa-user-shield"></i>مدیریت ریسک</li>
+                <li><i class="fas fa-book"></i>آموزش تریدینگ</li>
+            </ul>
+        </div>
+
+        <div class="social-links">
+            <h3>شبکه‌های اجتماعی</h3>
+            <a href="https://t.me/H0lwin_P" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/h0lwinum?igsh=MWU2eWI4dXBpOTllMA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="contact-button">
+            <a href="https://t.me/H0lwin_P" target="_blank">ارسال پیام</a>
+        </div>
+
+        <div class="channel-button">
+            <a href="https://t.me/digicoin_cha" target="_blank" onclick="window.close();">کانال من</a>
+        </div>
+    </div>
+</body>
+</html>
